@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <ctype.h>
+
+// Function to encrypt a message using Caesar cipher
+void caesarEncrypt(char text[], int shift) {
+    for (int i = 0; text[i] != '\0'; i++) {
+        if (isalpha(text[i])) {  // Check if the character is a letter
+            char base = isupper(text[i]) ? 'A' : 'a';  // Preserve case
+            text[i] = (text[i] - base + shift) % 26 + base;  // Apply shift
+        }
+    }
+}
+
+int main() {
+    char plaintext[100];
+    int shift;
+
+    // Get input from user
+    printf("Enter the plaintext: ");
+    fgets(plaintext, sizeof(plaintext), stdin);  // Read input text
+
+    printf("Enter the shift value: ");
+    scanf("%d", &shift);
+
+    // Encrypt the text
+    caesarEncrypt(plaintext, shift);
+
+    // Display the result
+    printf("Encrypted Ciphertext: %s\n", plaintext);
+
+    return 0;
+}
+
+
+
+
